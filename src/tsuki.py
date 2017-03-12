@@ -10,17 +10,17 @@
 import sys
 
 from TwitterAPI import TwitterAPI
-from TwitterAPI import TwitterConnectionError
+from TwitterAPI import TwitterConnectionError, TwitterRequestError
 
 
 def authenticate():
     """ This will will established an authentication using the keys given. """
 
     # NOTE: Provide your own keys!
-    from resources.constants import (CONSUMER_KEY,
-                                     CONSUMER_SECRET,
-                                     ACCESS_KEY,
-                                     ACCESS_SECRET)
+    from src.resources.constants import (CONSUMER_KEY,
+                                         CONSUMER_SECRET,
+                                         ACCESS_KEY,
+                                         ACCESS_SECRET)
 
     print("[Tsuki]: Authenticating, please do wait...")
     global api
@@ -31,11 +31,29 @@ def authenticate():
     print("[Tsuki]: Authentication successful!")
 
 
+def update_timeline(count):
+
+    print("[Tsuki]: Updating timeline...")
+    r = api.request('statuses/home_timeline', {'count': count})
+    for item in r.get_iterator():
+        if 'text' in item:
+            twitter_time = item['created_at']
+            twitter_name = item['user']['name']
+            twitter_handle = item['user']['screen_name']
+            twitter_tweet = item['text']
+
+            # Output format: [time] name (@screen_name): text
+            print("[{0}] {1} (@{2}): {3}".format(twitter_time,
+                                                twitter_name,
+                                                twitter_handle,
+                                                twitter_tweet))
+
+
 def main():
     """ The working code of Tsuki """
 
     from PyQt5.QtWidgets import QApplication
-    from gui.main_window import Tsuki
+    from src.gui.main_window import Tsuki
     
     APP = QApplication(sys.argv)
     window = Tsuki()
@@ -45,6 +63,9 @@ def main():
 if __name__ == '__main__':
     try:
         authenticate()
+        update_timeline(10)
         sys.exit(main())
     except TwitterConnectionError:
-        print('[Tsuki]: Authentication failed.')
+        print('[Tsuki]: Connection failed. Try to reconnect.')
+    except TwitterRequestError:
+        print('[Tsuki]: Request failed. Check your tokens.')
