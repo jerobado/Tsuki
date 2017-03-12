@@ -29,4 +29,3 @@ class Tsuki(QMainWindow):
 
         self.resize(325, 500)   # width, height
         self.setWindowTitle('Tsuki つき 0.1')
-

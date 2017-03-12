@@ -1,9 +1,10 @@
-""" Tsuki: your personal Twitter client
+""" Tsuki: your personal Twitter client application
 
     Interface   :   GUI (PyQt5)
     Language    :   Python 3.6.0
     Created     :   8 Mar 2017 2:02 AM
     Version     :   0.1
+    Author      :   Jero Bado <tokidokitalkyou@gmail.com>
 """
 
 import sys
@@ -13,9 +14,13 @@ from TwitterAPI import TwitterConnectionError
 
 
 def authenticate():
-    """ This will will established an authentication using the keys given """
+    """ This will will established an authentication using the keys given. """
 
-    from resources.constants import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET
+    # NOTE: Provide your own keys!
+    from resources.constants import (CONSUMER_KEY,
+                                     CONSUMER_SECRET,
+                                     ACCESS_KEY,
+                                     ACCESS_SECRET)
 
     print("[Tsuki]: Authenticating, please do wait...")
     global api
@@ -33,7 +38,7 @@ def main():
     from gui.main_window import Tsuki
     
     APP = QApplication(sys.argv)
-    window = Tsuki()       
+    window = Tsuki()
     APP.exec()
 
 
