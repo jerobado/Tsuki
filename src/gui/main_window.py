@@ -69,6 +69,15 @@ class Tsuki(QMainWindow):
                 #                                    twitter_handle,
                 #                                    twitter_tweet))
                 TIMELINE_LIST.append(twitter_tweet)
+        print("[Tsuki]: Timeline updated")
 
         model = TimelineListModel(TIMELINE_LIST)
         self.timelineListView.setModel(model)
+
+    def sendTweet(self, message):
+        print("[Tsuki]: Sending tweet...")
+        r = api.request('statuses/update', {'status': message})
+        if r.status_code == 200:
+            print("[Tsuki]: Tweet sent!")
+        else:
+            print("[Tsuki]: Tweet not sent.")

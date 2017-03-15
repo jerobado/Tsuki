@@ -22,6 +22,7 @@ def main():
     tsuki = Tsuki()
     tsuki.authenticate()
     tsuki.updateTimeline(50)
+    #tsuki.sendTweet("Anonymously doing something amazing.")
     APP.exec()
 
 
