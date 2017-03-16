@@ -21,8 +21,8 @@ def main():
     APP = QApplication(sys.argv)
     tsuki = Tsuki()
     tsuki.authenticate()
-    tsuki.updateTimeline(50)
-    #tsuki.sendTweet("Anonymously doing something amazing.")
+    #suki.sendTweet()
+    tsuki.updateTimeline(20)
     APP.exec()
 
 

@@ -74,10 +74,18 @@ class Tsuki(QMainWindow):
         model = TimelineListModel(TIMELINE_LIST)
         self.timelineListView.setModel(model)
 
-    def sendTweet(self, message):
-        print("[Tsuki]: Sending tweet...")
-        r = api.request('statuses/update', {'status': message})
-        if r.status_code == 200:
-            print("[Tsuki]: Tweet sent!")
-        else:
-            print("[Tsuki]: Tweet not sent.")
+    def sendTweet(self, message=""):
+
+        while True:
+            message = input("[Tsuki]: What's happening? ")
+            if len(message) > 0:
+                print("[Tsuki]: Sending tweet...")
+                r = api.request('statuses/update', {'status': message})
+                if r.status_code == 200:
+                    print("[Tsuki]: Tweet sent!")
+                    break
+                else:
+                    print("[Tsuki]: Tweet not sent.")
+                    break
+            else:
+                print("[Tsuki]: You should write something inspiring! :)")
