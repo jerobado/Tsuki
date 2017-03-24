@@ -4,6 +4,7 @@
 """
 
 from TwitterAPI import TwitterAPI
+from PyQt5.QtCore import QSettings
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QMainWindow,
                              QListView,
@@ -24,7 +25,20 @@ class Tsuki(QMainWindow):
         self._properties()
         self._createActions()
         self._createToolbar()
+        self._readSettings()
         #self.show()
+
+    def _readSettings(self):
+
+        settings = QSettings('mokachokokarbon', 'Tsuki')
+        self.restoreGeometry(settings.value('tsuki_geometry', self.saveGeometry()))
+        self.restoreState(settings.value('tsuki_state', self.saveState()))
+
+    def _writeSettings(self):
+
+        settings = QSettings('mokachokokarbon', 'Tsuki')
+        settings.setValue('tsuki_geometry', self.saveGeometry())
+        settings.setValue('tsuki_state', self.saveState())
 
     def _widgets(self):
 
@@ -120,7 +134,11 @@ class Tsuki(QMainWindow):
 
         print('[Tsuki]: Retweeted!')
 
-
     def sendMessage(self, message):
 
         print('[Tsuki]: Message sent!')
+
+    # EVENTS: events to be defined here
+    def closeEvent(self, e):
+
+        self._writeSettings()
