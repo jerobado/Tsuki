@@ -22,7 +22,8 @@ def main():
     tsuki = Tsuki()
     tsuki.authenticate()
     #suki.sendTweet()
-    tsuki.updateTimeline(20)
+    #tsuki.updateTimeline(20)
+    tsuki.show()
     APP.exec()
 
 

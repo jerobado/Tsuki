@@ -4,8 +4,12 @@
 """
 
 from TwitterAPI import TwitterAPI
-from PyQt5.QtWidgets import QMainWindow, QListView
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (QMainWindow,
+                             QListView,
+                             QAction)
 
+from src.resources import resources
 from src.resources.models import TimelineListModel
 
 
@@ -18,11 +22,14 @@ class Tsuki(QMainWindow):
         self._widgets()
         self._layout()
         self._properties()
-        self.show()
+        self._createActions()
+        self._createToolbar()
+        #self.show()
 
     def _widgets(self):
 
         self.timelineListView = QListView()
+        self.timelineListView.setWrapping(True)
 
     def _layout(self):
 
@@ -32,6 +39,25 @@ class Tsuki(QMainWindow):
 
         self.resize(325, 500)   # width, height
         self.setWindowTitle('Tsuki つき 0.1')
+
+    def _createActions(self):
+
+        self.updateAction = QAction(QIcon(':/update-1.png'), 'Update timeline', self,
+                                    triggered=self.updateTimeline)
+        self.tweetAction = QAction(QIcon(':/tweet-2.png'), 'Send tweet', self,
+                                    triggered=self.sendTweet)
+        self.retweetAction = QAction(QIcon(':/retweet-2.png'), 'Retweet', self,
+                                    triggered=self.reTweet)
+        self.sendAction = QAction(QIcon(':/send-1.png'), 'Send message', self,
+                                    triggered=self.sendMessage)
+
+    def _createToolbar(self):
+
+        self.tsukiToolBar = self.addToolBar('Tsuki')
+        self.tsukiToolBar.addAction(self.updateAction)
+        self.tsukiToolBar.addAction(self.tweetAction)
+        self.tsukiToolBar.addAction(self.retweetAction)
+        self.tsukiToolBar.addAction(self.sendAction)
 
     # TSUKI METHODS DEFINITION STARTS HERE
     def authenticate(self):
@@ -51,7 +77,7 @@ class Tsuki(QMainWindow):
                          access_token_secret=ACCESS_SECRET)
         print("[Tsuki]: Authentication successful!")
 
-    def updateTimeline(self, count):
+    def updateTimeline(self, count=10):
 
         TIMELINE_LIST = []
         print("[Tsuki]: Updating timeline...")
@@ -89,3 +115,12 @@ class Tsuki(QMainWindow):
                     break
             else:
                 print("[Tsuki]: You should write something inspiring! :)")
+
+    def reTweet(self, message):
+
+        print('[Tsuki]: Retweeted!')
+
+
+    def sendMessage(self, message):
+
+        print('[Tsuki]: Message sent!')

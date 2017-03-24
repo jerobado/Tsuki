@@ -1,0 +1,11 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file alias="update-1.png">images/update-1.png</file>
+        <file alias="tweet-2.png">images/tweet-2.png</file>
+        <file alias="retweet-2.png">images/retweet-2.png</file>
+        <file alias="send-1.png">images/send-1.png</file>
+    </qresource>
+</RCC>
+
+<!-- move resources.qrc (this file) in the root folder before running the command below -->
+<!-- pyrcc5 -o src/resources/resources.py resources.qrc -->
