@@ -6,7 +6,7 @@ A simple Twitter client application written in Python (backend) and PyQt (GUI) u
 
 User Interface
 -----
-![Tsuki GUI](https://github.com/mokachokokarbon/Tsuki/blob/0.1/images/tsuki.png)
+![Tsuki GUI](https://github.com/mokachokokarbon/Tsuki/blob/0.1/images/tsuki-gui.png)
 
 Essential Tools
 ---------------
