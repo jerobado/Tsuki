@@ -4,6 +4,10 @@ Tsuki つき
 
 A simple Twitter client application written in Python (backend) and PyQt (GUI) utilizing the TwitterAPI library.
 
+User Interface
+-----
+![Tsuki GUI](https://github.com/mokachokokarbon/Tsuki/blob/0.1/images/tsuki.png)
+
 Essential Tools
 ---------------
 For the developers who want to get their hands dirty on this project, the essential tools are listed below and how to get them:
