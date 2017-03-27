@@ -1,5 +1,6 @@
 Tsuki つき
 -----
+[![Code Climate](https://codeclimate.com/github/mokachokokarbon/Tsuki/badges/gpa.svg)](https://codeclimate.com/github/mokachokokarbon/Tsuki)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/mokachokokarbon/Tsuki/issues)
 
 A simple Twitter client application written in Python (backend) and PyQt (GUI) utilizing the TwitterAPI library.
