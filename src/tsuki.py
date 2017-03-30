@@ -11,6 +11,8 @@ import sys
 
 from TwitterAPI import TwitterConnectionError, TwitterRequestError
 
+sys.path.append('../')
+
 
 def main():
     """ The working code of Tsuki """
@@ -21,8 +23,8 @@ def main():
     APP = QApplication(sys.argv)
     tsuki = Tsuki()
     tsuki.authenticate()
-    #suki.sendTweet()
-    #tsuki.updateTimeline(20)
+    #tsuki.sendTweet()
+    tsuki.updateTimeline(20)
     tsuki.show()
     APP.exec()
 
