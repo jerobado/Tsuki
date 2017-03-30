@@ -26,7 +26,10 @@ class Tsuki(QMainWindow):
         self._createActions()
         self._createToolbar()
         self._readSettings()
-        #self.show()
+
+        # Invoke Tsuki routines
+        self.authenticate()
+        self.updateTimeline(20)
 
     def _readSettings(self):
 
@@ -43,7 +46,7 @@ class Tsuki(QMainWindow):
     def _widgets(self):
 
         self.timelineListView = QListView()
-        self.timelineListView.setWrapping(True)
+        #self.timelineListView.setWrapping(True)
 
     def _layout(self):
 

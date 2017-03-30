@@ -1,4 +1,4 @@
-""" Tsuki: your personal Twitter client application
+""" Tsuki: A simple Twitter client application written in Python and PyQt utilizing the TwitterAPI library.
 
     Interface   :   GUI (PyQt5)
     Language    :   Python 3.6.0
@@ -8,7 +8,6 @@
 """
 
 import sys
-
 from TwitterAPI import TwitterConnectionError, TwitterRequestError
 
 sys.path.append('../')
@@ -22,9 +21,6 @@ def main():
     
     APP = QApplication(sys.argv)
     tsuki = Tsuki()
-    tsuki.authenticate()
-    #tsuki.sendTweet()
-    tsuki.updateTimeline(20)
     tsuki.show()
     APP.exec()
 
