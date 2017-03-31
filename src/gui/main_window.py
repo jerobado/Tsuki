@@ -113,6 +113,7 @@ class Tsuki(QMainWindow):
                 #                                    twitter_tweet))
                 TIMELINE_LIST.append(twitter_tweet)
         print("[Tsuki]: Timeline updated")
+        return True
 
         model = TimelineListModel(TIMELINE_LIST)
         self.timelineListView.setModel(model)
@@ -140,6 +141,8 @@ class Tsuki(QMainWindow):
     def sendMessage(self, message):
 
         print('[Tsuki]: Message sent!')
+
+    # METHODS: reimplementation starts here
 
     # EVENTS: events to be defined here
     def closeEvent(self, e):
