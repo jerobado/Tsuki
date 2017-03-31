@@ -1,2 +1,2 @@
-PyQt5
-TwitterAPI
+PyQt5 == 5.8.1
+TwitterAPI == 2.4.5
