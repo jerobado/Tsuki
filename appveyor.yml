@@ -7,4 +7,4 @@ environment:
     - PYTHON: "C:/Python36"
 
 test-script:
-  - python -m unittest tests/tsukitests.py
+  - cmd: python -m unittest tests/tsukitests.py
