@@ -1,7 +1,10 @@
 build: false
 
 environment:
-  - PYTHON: "C:/Python36"
+
+  matrix:
+
+    - PYTHON: "C:/Python36"
 
 install:
   - cmd: pip install PyQt5
