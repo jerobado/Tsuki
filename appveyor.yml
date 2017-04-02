@@ -7,6 +7,4 @@ environment:
     - PYTHON: "C:/Python36"
 
 install:
-  - cmd: pip install PyQt5
-  - cmd: pip install Twitter
-
+  - cmd: pip install -r requirements.txt
