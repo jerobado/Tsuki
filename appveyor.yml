@@ -10,6 +10,3 @@ install:
   - cmd: pip install PyQt5
   - cmd: pip install Twitter
 
-test-script:
-  - python -m unittest tests/tsukitests.py
-
