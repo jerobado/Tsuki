@@ -5,3 +5,6 @@ environment:
   matrix:
 
     - PYTHON: "C:/Python36"
+
+test-script:
+  - python -m unittest tests/tsukitests.py
